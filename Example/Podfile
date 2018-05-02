@@ -2,6 +2,7 @@ use_frameworks!
 
 target 'StaticMapRequestBuilder_Example' do
   pod 'StaticMapRequestBuilder', :path => '../'
+  pod 'Kingfisher', '~> 4.0'
 
   target 'StaticMapRequestBuilder_Tests' do
     inherit! :search_paths

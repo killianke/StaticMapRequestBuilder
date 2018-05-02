@@ -1,7 +1,9 @@
 PODS:
+  - Kingfisher (4.6.3)
   - StaticMapRequestBuilder (0.1.0)
 
 DEPENDENCIES:
+  - Kingfisher (~> 4.0)
   - StaticMapRequestBuilder (from `../`)
 
 EXTERNAL SOURCES:
@@ -9,8 +11,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
+  Kingfisher: 98e6d5b5e807645743e8ed5ececd25d688d38452
   StaticMapRequestBuilder: c4bbb792d3657ab605402086b05e9e4d89482372
 
-PODFILE CHECKSUM: 2fb57e6c343daa4eaa37dedf6dabb888b87b4483
+PODFILE CHECKSUM: d946d3f63b692ba17d55668ddd05702b2b7d8343
 
 COCOAPODS: 1.2.1
