@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'StaticMapRequestBuilder_Example' do
+  pod 'StaticMapRequestBuilder', :path => '../'
+
+  target 'StaticMapRequestBuilder_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
