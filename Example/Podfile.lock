@@ -1,0 +1,16 @@
+PODS:
+  - StaticMapRequestBuilder (0.1.0)
+
+DEPENDENCIES:
+  - StaticMapRequestBuilder (from `../`)
+
+EXTERNAL SOURCES:
+  StaticMapRequestBuilder:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  StaticMapRequestBuilder: c4bbb792d3657ab605402086b05e9e4d89482372
+
+PODFILE CHECKSUM: 2fb57e6c343daa4eaa37dedf6dabb888b87b4483
+
+COCOAPODS: 1.2.1
