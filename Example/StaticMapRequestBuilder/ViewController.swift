@@ -26,6 +26,7 @@ class ViewController: UIViewController {
             .addCenter(coordinate: coordinate)
             .addZoom(12)
             .imageFormat(.png)
+            .mapType(.roadmap)
             .build()
         
         print("Map URL: \(String(describing: mapUrl))")

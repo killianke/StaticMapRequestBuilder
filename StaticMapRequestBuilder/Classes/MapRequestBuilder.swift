@@ -14,6 +14,13 @@ public enum ImageFormat: String {
     case jpg
 }
 
+public enum MapType: String {
+    case roadmap
+    case terrain
+    case satellite
+    case hybrid
+}
+
 open class MapRequestBuilder {
     
     private var components = URLComponents(string: "https://maps.googleapis.com/maps/api/staticmap")
@@ -40,6 +47,12 @@ open class MapRequestBuilder {
     public func imageFormat(_ format: ImageFormat) -> MapRequestBuilder {
         let formatQuery = URLQueryItem(name: "format", value: format.rawValue)
         components?.queryItems?.append(formatQuery)
+        return self
+    }
+    
+    public func mapType(_ type: MapType) -> MapRequestBuilder {
+        let typeQuery = URLQueryItem(name: "maptype", value: type.rawValue)
+        components?.queryItems?.append(typeQuery)
         return self
     }
     
