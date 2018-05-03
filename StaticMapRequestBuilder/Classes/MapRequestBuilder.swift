@@ -56,6 +56,18 @@ open class MapRequestBuilder {
         return self
     }
     
+    public func retinaScale() -> MapRequestBuilder {
+        let scaleQuery = URLQueryItem(name: "scale", value: String(2))
+        components?.queryItems?.append(scaleQuery)
+        return self
+    }
+    
+    public func apiKey(_ key: String) -> MapRequestBuilder {
+        let keyQuery = URLQueryItem(name: "key", value: key)
+        components?.queryItems?.append(keyQuery)
+        return self
+    }
+    
     public func build() -> URL? {
         return components?.url
     }

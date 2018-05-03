@@ -27,6 +27,7 @@ class ViewController: UIViewController {
             .addZoom(12)
             .imageFormat(.png)
             .mapType(.roadmap)
+            .retinaScale()
             .build()
         
         print("Map URL: \(String(describing: mapUrl))")
