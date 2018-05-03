@@ -19,19 +19,19 @@ open class MapRequestBuilder {
 
     }
     
-    open func addCenter(coordinate: CLLocationCoordinate2D) -> MapRequestBuilder {
+    public func addCenter(coordinate: CLLocationCoordinate2D) -> MapRequestBuilder {
         let centerQuery = URLQueryItem(name: "center", value: "\(coordinate.latitude),\(coordinate.longitude)")
         components?.queryItems?.append(centerQuery)
         return self
     }
     
-    open func addZoom(_ level: Int) -> MapRequestBuilder {
+    public func addZoom(_ level: Int) -> MapRequestBuilder {
         let zoomQuery = URLQueryItem(name: "zoom", value: String(level))
         components?.queryItems?.append(zoomQuery)
         return self
     }
     
-    open func build() -> URL? {
+    public func build() -> URL? {
         return components?.url
     }
 }
