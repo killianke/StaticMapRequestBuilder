@@ -6,7 +6,12 @@
 //
 
 import Foundation
-import MapKit
+import CoreLocation
+
+public enum CenterType {
+    case address(String)
+    case coordinate(CLLocationCoordinate2D)
+}
 
 public enum ImageFormat: String {
     case png
@@ -32,8 +37,16 @@ open class MapRequestBuilder {
 
     }
     
-    public func addCenter(coordinate: CLLocationCoordinate2D) -> MapRequestBuilder {
-        let centerQuery = URLQueryItem(name: "center", value: "\(coordinate.latitude),\(coordinate.longitude)")
+    public func addCenter(_ center: CenterType) -> MapRequestBuilder {
+        let centerQuery: URLQueryItem
+        
+        switch center {
+        case .address(let addressString):
+            centerQuery = URLQueryItem(name: "center", value: addressString)
+        case .coordinate(let coordinate):
+            centerQuery = URLQueryItem(name: "center", value: "\(coordinate.latitude),\(coordinate.longitude)")
+        }
+        
         components?.queryItems?.append(centerQuery)
         return self
     }

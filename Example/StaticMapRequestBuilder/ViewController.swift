@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 import StaticMapRequestBuilder
-import MapKit
+import CoreLocation
 
 class ViewController: UIViewController {
     
@@ -23,7 +23,8 @@ class ViewController: UIViewController {
         
         let coordinate = CLLocationCoordinate2D(latitude: 52.980778, longitude: -6.046528)
         let mapUrl = MapRequestBuilder(withSize: CGSize(width: 300, height: 200))
-            .addCenter(coordinate: coordinate)
+            //.addCenter(.coordinate(coordinate))
+            .addCenter(.address("Glenealy, Co. Wicklow"))
             .addZoom(12)
             .imageFormat(.png)
             .mapType(.roadmap)
