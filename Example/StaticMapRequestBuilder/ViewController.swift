@@ -24,7 +24,8 @@ class ViewController: UIViewController {
         let coordinate = CLLocationCoordinate2D(latitude: 52.980778, longitude: -6.046528)
         let mapUrl = MapRequestBuilder(withSize: CGSize(width: 300, height: 200))
             .addCenter(coordinate: coordinate)
-            .addZoom(20)
+            .addZoom(12)
+            .imageFormat(.png)
             .build()
         
         print("Map URL: \(String(describing: mapUrl))")

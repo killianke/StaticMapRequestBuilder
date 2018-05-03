@@ -8,6 +8,12 @@
 import Foundation
 import MapKit
 
+public enum ImageFormat: String {
+    case png
+    case gif
+    case jpg
+}
+
 open class MapRequestBuilder {
     
     private var components = URLComponents(string: "https://maps.googleapis.com/maps/api/staticmap")
@@ -28,6 +34,12 @@ open class MapRequestBuilder {
     public func addZoom(_ level: Int) -> MapRequestBuilder {
         let zoomQuery = URLQueryItem(name: "zoom", value: String(level))
         components?.queryItems?.append(zoomQuery)
+        return self
+    }
+    
+    public func imageFormat(_ format: ImageFormat) -> MapRequestBuilder {
+        let formatQuery = URLQueryItem(name: "format", value: format.rawValue)
+        components?.queryItems?.append(formatQuery)
         return self
     }
     
