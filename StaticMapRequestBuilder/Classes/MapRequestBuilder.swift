@@ -87,22 +87,19 @@ open class MapRequestBuilder {
         return self
     }
     
-    public func addMarker(at coordinate: CLLocationCoordinate2D,
-                          size: MarkerSize? = nil,
-                          color: UIColor? = nil,
-                          label: Character? = nil) -> MapRequestBuilder {
+    public func addMarker(_ marker: Marker) ->  MapRequestBuilder {
         
-        var queryValue = "\(coordinate.latitude),\(coordinate.longitude)"
+        var queryValue = "\(marker.coordinate.latitude),\(marker.coordinate.longitude)"
         
-        if let size = size {
+        if let size = marker.size {
             queryValue = ("size:\(size.rawValue)|\(queryValue)")
         }
         
-        if let color = color {
+        if let color = marker.color {
             queryValue = ("color:\(color.hexString)|\(queryValue)")
         }
         
-        if let character = label {
+        if let character = marker.label {
             queryValue = ("label:\(character)|\(queryValue)")
         }
         
@@ -113,6 +110,23 @@ open class MapRequestBuilder {
     
     public func build() -> URL? {
         return components?.url
+    }
+}
+
+public struct Marker {
+    let coordinate: CLLocationCoordinate2D
+    var size: MarkerSize?
+    var color: UIColor?
+    var label: Character?
+    
+    public init(coordinate: CLLocationCoordinate2D,
+         size: MarkerSize? = nil,
+         color: UIColor? = nil,
+         label: Character? = nil) {
+        self.coordinate = coordinate
+        self.size = size
+        self.color = color
+        self.label = label
     }
 }
 
