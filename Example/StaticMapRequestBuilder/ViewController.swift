@@ -21,14 +21,17 @@ class ViewController: UIViewController {
         imageView.backgroundColor = .white
         imageView.contentMode = .scaleAspectFit
         
-        let coordinate = CLLocationCoordinate2D(latitude: 52.980778, longitude: -6.046528)
+        let wicklow = CLLocationCoordinate2D(latitude: 52.980778, longitude: -6.046528)
+        let rathnew = CLLocationCoordinate2D(latitude: 52.985642, longitude: -6.053813)
         let mapUrl = MapRequestBuilder(withSize: CGSize(width: 300, height: 200))
             //.addCenter(.coordinate(coordinate))
-            .addCenter(.address("Glenealy, Co. Wicklow"))
+            .addCenter(.address("Wicklow, Co. Wicklow"))
             .addZoom(12)
             .imageFormat(.png)
             .mapType(.roadmap)
             .retinaScale()
+            .addMarker(at: wicklow, size: .mid, color: .purple, label: "C")
+            .addMarker(at: rathnew, size: .tiny, color: .red)
             .build()
         
         print("Map URL: \(String(describing: mapUrl))")

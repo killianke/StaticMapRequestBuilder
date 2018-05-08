@@ -26,6 +26,12 @@ public enum MapType: String {
     case hybrid
 }
 
+public enum MarkerSize: String {
+    case tiny
+    case small
+    case mid
+}
+
 open class MapRequestBuilder {
     
     private var components = URLComponents(string: "https://maps.googleapis.com/maps/api/staticmap")
@@ -81,7 +87,48 @@ open class MapRequestBuilder {
         return self
     }
     
+    public func addMarker(at coordinate: CLLocationCoordinate2D,
+                          size: MarkerSize? = nil,
+                          color: UIColor? = nil,
+                          label: Character? = nil) -> MapRequestBuilder {
+        
+        var queryValue = "\(coordinate.latitude),\(coordinate.longitude)"
+        
+        if let size = size {
+            queryValue = ("size:\(size.rawValue)|\(queryValue)")
+        }
+        
+        if let color = color {
+            queryValue = ("color:\(color.hexString)|\(queryValue)")
+        }
+        
+        if let character = label {
+            queryValue = ("label:\(character)|\(queryValue)")
+        }
+        
+        let markerQuery = URLQueryItem(name: "markers", value: queryValue)
+        components?.queryItems?.append(markerQuery)
+        return self
+    }
+    
     public func build() -> URL? {
         return components?.url
     }
+}
+
+extension UIColor {
+    
+    fileprivate var hexString: String {
+        var r:CGFloat = 0
+        var g:CGFloat = 0
+        var b:CGFloat = 0
+        var a:CGFloat = 0
+        
+        getRed(&r, green: &g, blue: &b, alpha: &a)
+        
+        let rgb: Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
+        
+        return String(format:"0x%06x", rgb)
+    }
+
 }
