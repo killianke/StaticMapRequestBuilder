@@ -30,6 +30,7 @@ public enum MarkerSize: String {
     case tiny
     case small
     case mid
+    case large
 }
 
 open class MapRequestBuilder {
@@ -87,6 +88,7 @@ open class MapRequestBuilder {
         return self
     }
     
+    @discardableResult
     public func addMarker(_ marker: Marker) ->  MapRequestBuilder {
         
         var queryValue = "\(marker.coordinate.latitude),\(marker.coordinate.longitude)"
@@ -105,6 +107,13 @@ open class MapRequestBuilder {
         
         let markerQuery = URLQueryItem(name: "markers", value: queryValue)
         components?.queryItems?.append(markerQuery)
+        return self
+    }
+    
+    public func addMarkers(_ markers: [Marker]) -> MapRequestBuilder {
+        markers.forEach { marker in
+            self.addMarker(marker)
+        }
         return self
     }
     
