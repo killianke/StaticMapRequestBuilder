@@ -20,6 +20,27 @@ it, simply add the following line to your Podfile:
 pod 'StaticMapRequestBuilder'
 ```
 
+## Usage
+
+### Quick Start
+
+```swift
+
+let coordinate = CLLocationCoordinate2D(latitude: 40.7484, longitude: -73.9857)
+let marker = Marker(coordinate: coordinate, color: .blue)
+let mapSize = CGSize(width: 300, height: 200)
+
+let mapRequestUrl = MapRequestBuilder(withSize: mapSize)
+.addCenter(.address("Midtown Manhattan, New York, NY"))
+.addMarker(marker)
+.addZoom(13)
+.imageFormat(.png)
+.mapType(.roadmap)
+.retinaScale()
+.build()
+
+```
+
 ## Author
 
 Killian Kenny, killiankenny21@gmail.com
